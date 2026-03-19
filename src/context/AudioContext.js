@@ -19,14 +19,14 @@ export const AudioProvider = ({ children }) => {
 
   // Refs to always have latest values inside callbacks without stale closures
   const isLoopAyahRef = useRef(isLoopAyah);
-  const isLoopSurrahRef = useRef(isLoopSurah);
+  const isLoopSurahRef = useRef(isLoopSurah);
   const queueRef = useRef(queue);
   const queueIndexRef = useRef(queueIndex);
   const currentSurahIdRef = useRef(currentSurahId);
   const playbackSpeedRef = useRef(playbackSpeed);
 
   useEffect(() => { isLoopAyahRef.current = isLoopAyah; }, [isLoopAyah]);
-  useEffect(() => { isLoopSurrahRef.current = isLoopSurah; }, [isLoopSurah]);
+  useEffect(() => { isLoopSurahRef.current = isLoopSurah; }, [isLoopSurah]);
   useEffect(() => { queueRef.current = queue; }, [queue]);
   useEffect(() => { queueIndexRef.current = queueIndex; }, [queueIndex]);
   useEffect(() => { currentSurahIdRef.current = currentSurahId; }, [currentSurahId]);
@@ -77,7 +77,7 @@ export const AudioProvider = ({ children }) => {
         const nextIdx = idx + 1;
 
         if (nextIdx >= q.length) {
-          if (isLoopSurrahRef.current && q.length > 0) {
+          if (isLoopSurahRef.current && q.length > 0) {
             loadAndPlayRef.current?.(q[0], currentSurahIdRef.current, q, 0);
           } else {
             setIsPlaying(false);
@@ -149,7 +149,7 @@ export const AudioProvider = ({ children }) => {
     if (q.length === 0) return;
     const nextIdx = idx + 1;
     if (nextIdx >= q.length) {
-      if (isLoopSurrahRef.current) {
+      if (isLoopSurahRef.current) {
         await loadAndPlay(q[0], currentSurahIdRef.current, q, 0);
       } else {
         await stop();
@@ -188,12 +188,12 @@ export const AudioProvider = ({ children }) => {
       return !v;
     });
     setIsLoopSurah(false);
-    isLoopSurrahRef.current = false;
+    isLoopSurahRef.current = false;
   }, []);
 
   const toggleLoopSurah = useCallback(() => {
     setIsLoopSurah((v) => {
-      isLoopSurrahRef.current = !v;
+      isLoopSurahRef.current = !v;
       return !v;
     });
     setIsLoopAyah(false);

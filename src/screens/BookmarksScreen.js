@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   deleteBtn: { padding: 4 },
   ayahText: {
     fontSize: 18, lineHeight: 36, textAlign: 'right',
-    writingDirection: 'rtl', color: '#333',
+    writingDirection: 'rtl',
   },
   bookmarkFooter: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   dateText: { fontSize: Typography.uiFontSize.xs, flex: 1 },
